@@ -1,0 +1,207 @@
+// 自己的重置样式代码，公用样式代码
+* {
+  box-sizing: border-box;
+ }
+ 
+ html {
+   height: 100%;
+   font-size: 14px;
+ }
+ body {
+   height: 100%;
+   color: #333;
+   min-width: 1240px;
+   font: 1em/1.4 'Microsoft Yahei', 'PingFang SC', 'Avenir', 'Segoe UI', 'Hiragino Sans GB', 'STHeiti', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif
+ }
+ 
+ ul,
+ h1,
+ h3,
+ h4,
+ p,
+ dl,
+ dd {
+   padding: 0;
+   margin: 0;
+ }
+ 
+ a {
+   text-decoration: none;
+   color: #333;
+   outline: none;
+ }
+ 
+ i {
+   font-style: normal;
+ }
+ 
+ input[type="text"],
+ input[type="search"],
+ input[type="password"], 
+ input[type="checkbox"]{
+   padding: 0;
+   outline: none;
+   border: none;
+   -webkit-appearance: none;
+   &::placeholder{
+     color: #ccc;
+   }
+ }
+ 
+ img {
+   max-width: 100%;
+   max-height: 100%;
+   vertical-align: middle;
+ }
+ 
+ ul {
+   list-style: none;
+ }
+ 
+ #app {
+   background: #f5f5f5;
+   user-select: none;
+ }
+ 
+ .container {
+   width: 1240px;
+   margin: 0 auto;
+   position: relative;
+ }
+ 
+ .ellipsis {
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+ }
+ 
+ .ellipsis-2 {
+   word-break: break-all;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+   overflow: hidden;
+ }
+ 
+ .fl {
+   float: left;
+ }
+ 
+ .fr {
+   float: right;
+ }
+ 
+ .clearfix:after {
+   content: ".";
+   display: block;
+   visibility: hidden;
+   height: 0;
+   line-height: 0;
+   clear: both;
+ }
+
+
+ // 离开时候淡出动画
+.fade{
+  &-leave {
+    &-active {
+      position: absolute;
+      width: 100%;
+      transition: opacity .5s .2s;
+      z-index: 1;
+    }
+    &-to {
+      opacity: 0;
+    }
+  }
+}
+
+// 面包屑动画
+// 进入：右侧 20px的位移 透明度0  做过渡0.5s   本来位置 没有位移 透明度1
+// 离开：本来位置 没有位移 透明度1  做过渡0.5s  右侧 20px的位移 透明度0
+.fade-right-enter-from,
+.fade-right-leave-to{
+  transform: translateX(20px);
+  opacity: 0;
+}
+.fade-right-enter-active,
+.fade-right-leave-active{
+  transition: all 0.5s;
+}
+.fade-right-enter-to,
+.fade-right-leave-from{
+  transform: none;
+  opacity: 1;
+}
+
+// 表单
+.xtx-form {
+  padding: 50px 0;
+  &-item {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+    .label {
+      width: 180px;
+      padding-right: 10px;
+      text-align: right;
+      color: #999;
+      ~ .field {
+        margin-left: 0;
+      }
+    }
+    .field {
+      width: 320px;
+      height: 50px;
+      position: relative;
+      margin-left: 190px;
+      .icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        color: #999;
+        ~ .input {
+          padding-left: 40px;
+        }
+      }
+      .input{
+        border: 1px solid #e4e4e4;
+        width: 320px;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 10px;
+        &.err {
+          border-color: @priceColor;
+        }
+        &:focus,&:active{
+          border-color: @xtxColor;
+        }
+      }
+    }
+    .error {
+      width: 180px;
+      padding-left: 10px;
+      color: @priceColor;
+    }
+  }
+  .submit {
+    width: 320px;
+    height: 50px;
+    border-radius: 4px;
+    background: @xtxColor;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+  }
+}

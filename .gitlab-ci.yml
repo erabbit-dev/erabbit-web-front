@@ -1,0 +1,21 @@
+stages:
+  - build
+
+cache:
+  key: ${CI_BUILD_REF_NAME}
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  only:
+    - master
+  script:
+    - npm install @vue/cli-service --unsafe-perm
+    - npm i
+    - npm run build
+    - rm -rf /home/erabbit-client-vue3/dist
+    - mkdir /home/erabbit-client-vue3/dist
+    - cp -r dist/* /home/erabbit-client-vue3/dist
+  tags: 
+    - erabbit-client-pc-vue3
