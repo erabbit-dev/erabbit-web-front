@@ -1,6 +1,9 @@
 const path = require('path')
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/erabbit-web-front/'
+    : '/',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
